@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>switch</title>
+  <meta name="author" content="automata">
+  <meta name="description" content="ON/OFF switch" />
+
+  <link href='http://fonts.googleapis.com/css?family=Fredericka+the+Great' rel='stylesheet' type='text/css'>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script src="http://meemoo.org/meemoo/v1/meemoo-min.js"></script>
+
+  <style type="text/css">
+  #display {
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 28pt;
+    padding: 10px;
+  }
+
+  #display h1 {
+    font-size: 32pt;
+  }
+
+  #switch {
+    background: url("light-switch.png") no-repeat scroll -80px 0 transparent;
+    bottom: 50px;
+    cursor: pointer;
+    height: 120px;
+    left: 50px;
+    position: absolute;
+    width: 80px;
+    z-index: 100;
+  }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div id="switch" style="background-position: 0px 0px;"></div>
+
+  <script type="text/javascript">
+
+    // based on http://pushingpixels.at/experiments/dynamic_shadow/
+    var lswitch = $("#switch");
+    var state = 0;
+    lswitch.css("backgroundPosition","-80px 0");
+
+    lswitch.click(function () {
+      if (state == 0) {
+        lswitch.css("backgroundPosition","0 0");
+        state = 1;
+      } else {
+        lswitch.css("backgroundPosition","-80px 0");
+        state = 0;
+      }
+      Meemoo.send("out", state);
+    }); 
+
+    Meemoo.setInfo({
+      title: "switch",
+      author: "automata",
+      description: "ON/OFF switch"
+    }).addOutputs({
+      out: {
+        type: "number"
+      }
+    });
+  </script>
+</body>
+</html>

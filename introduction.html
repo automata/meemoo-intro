@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>introduction</title>
+  <meta name="author" content="automata">
+  <meta name="description" content="Introduction to Meemoo" />
+
+  <link href='http://fonts.googleapis.com/css?family=Fredericka+the+Great' rel='stylesheet' type='text/css'>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script src="http://meemoo.org/meemoo/v1/meemoo-min.js"></script>
+
+  <script src="http://popcornjs.org/code/dist/popcorn-complete.js"></script>
+
+  <style type="text/css">
+  #display {
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 28pt;
+    padding: 10px;
+  }
+
+  #display h1 {
+    font-size: 32pt;
+  }
+  </style>
+
+</head>
+
+<body>
+
+  <div id="player"></div>
+  <div id="display"></div>
+
+  <script type="text/javascript">
+
+    var popcorn;
+
+    document.addEventListener("DOMContentLoaded", function() {
+
+      // using a baseplayer (we don't need a video, just a timeline)
+      Popcorn.player("baseplayer");
+
+      popcorn = Popcorn.baseplayer("#player");
+      popcorn.play(0);
+ 
+      // here the events triggered at specific times
+      popcorn.footnote({
+        start: 2,
+        end: 5,
+        target: "display",
+        text: "<h1>Welcome to Meemoo!</h1>"
+      });
+
+      popcorn.footnote({
+        start: 6,
+        end: 10,
+        target: "display",
+        text: "Meemoo is a <b>tool</b> to <b>remix</b> the Web."
+      });
+
+      popcorn.footnote({
+        start: 11,
+        end: 15,
+        target: "display",
+        text: "With Meemoo you can create images, animations, music..."
+      });
+
+      popcorn.footnote({
+        start: 16,
+        end: 19,
+        target: "display",
+        text: "... and share your creations on the Web!"
+      });
+
+      popcorn.footnote({
+        start: 19,
+        end: 23,
+        target: "display",
+        text: "Meemoo is what we call a <b>visual programming language</b>."
+      });
+
+      popcorn.footnote({
+        start: 24,
+        end: 27,
+        target: "display",
+        text: "A language made by <b>boxes</b> and <b>wires</b>."
+      });
+
+      popcorn.footnote({
+        start: 28,
+        end: 31,
+        target: "display",
+        text: "This is a <b>box</b>. Or, a <b>module</b>."
+      });
+
+      popcorn.footnote({
+        start: 32,
+        end: 35,
+        target: "display",
+        text: "Each <b>module</b> has <b>inputs</b> and <b>outputs</b>."
+      });
+
+      popcorn.footnote({
+        start: 36,
+        end: 39,
+        target: "display",
+        text: "We connect <b>outputs</b> into <b>inputs</b> using <b>wires</b>."
+      });
+
+      popcorn.footnote({
+        start: 40,
+        end: 42,
+        target: "display",
+        text: "Try yourself!"
+      });
+
+      popcorn.footnote({
+        start: 43,
+        target: "display",
+        text: "Connect the <b>switch</b> module below to the <b>lamp</b> module."
+      });
+
+    }, false);
+
+    Meemoo.setInfo({
+      title: "introduction",
+      author: "automata",
+      description: "Introduction to Meemoo"
+    }).addInputs({
+      play: {
+        action: function (foo) {
+            popcorn.play();
+        },
+        type: "bang"
+      },
+      pause: {
+        action: function (foo) {
+           popcorn.pause();
+        },
+        type: "bang"
+      },
+    }).addOutputs({
+      bang: {
+        type: "bang"
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>lamp</title>
+  <meta name="author" content="automata">
+  <meta name="description" content="A light bulb" />
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script src="http://meemoo.org/meemoo/v1/meemoo-min.js"></script>
+
+  <style type="text/css">
+  #light-bulb {
+    background: url("lightbulb.png") no-repeat scroll -150px 0 transparent;
+    height: 150px;
+    width: 150px;
+    z-index: 800;
+  }
+
+  #light-bulb2 {
+    background: url("lightbulb.png") no-repeat scroll 0 0 transparent;
+    height: 150px;
+    width: 150px;
+  }
+  </style>
+
+</head>
+
+<body>
+
+  <div id="light-bulb">
+    <div id="light-bulb2" style="opacity: 1;"></div>
+  </div>
+
+  <script type="text/javascript">
+
+    var lightbulb = $("#light-bulb");
+    var lightbulb2 = $("#light-bulb2"); 
+    lightbulb2.fadeTo(0,0);
+
+    Meemoo.setInfo({
+      title: "lamp",
+      author: "automata",
+      description: "A light bulb"
+    }).addInputs({
+      in: {
+        action: function (state) {
+          console.log(state);
+
+    if (state == 1) {
+      lightbulb.removeClass("off");
+      lightbulb2.stop().fadeTo(750,1);
+    } else {
+      lightbulb.addClass("off");
+      lightbulb2.stop().fadeTo(750,0);
+    }
+
+        },
+        type: "number"
+      }
+    });
+  </script>
+</body>
+</html>
