@@ -6,8 +6,12 @@
   <meta name="author" content="automata">
   <meta name="description" content="A light bulb" />
 
+  <link href="http://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet" type="text/css">
+
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   <script src="http://meemoo.org/meemoo/v1/meemoo-min.js"></script>
+
+  <script src="http://popcornjs.org/code/dist/popcorn-complete.js"></script>
 
   <style type="text/css">
   #light-bulb {
@@ -15,12 +19,28 @@
     height: 150px;
     width: 150px;
     z-index: 800;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
   #light-bulb2 {
     background: url("lightbulb.png") no-repeat scroll 0 0 transparent;
     height: 150px;
     width: 150px;
+    float: left;
+  }
+
+  #display {
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 28pt;
+    padding: 0px;
+    float: right;
+    padding-left: 160px;
+  }
+
+  #display h1 {
+    font-size: 32pt;
   }
   </style>
 
@@ -28,11 +48,202 @@
 
 <body>
 
+  <div id="player"></div>
+  <div id="display"></div>
+
   <div id="light-bulb">
     <div id="light-bulb2" style="opacity: 1;"></div>
   </div>
 
   <script type="text/javascript">
+
+    // popcorn baseplayer
+
+    var popcorn;
+
+    document.addEventListener("DOMContentLoaded", function() {
+
+      // using a baseplayer (we don't need a video, just a timeline)
+      Popcorn.player("baseplayer");
+
+      popcorn = Popcorn.baseplayer("#player");
+      //popcorn.play(0);
+ 
+      // here the events triggered at specific times
+      popcorn.footnote({
+        start: 1,
+        end: 5,
+        target: "display",
+        text: "Good job!"
+      });
+    
+      popcorn.footnote({
+        start: 6,
+        end: 11,
+        target: "display",
+        text: "You can disconnect dragging the wire's plug..."
+      });
+
+      popcorn.code({
+        start: 6,
+        end: 11,
+        onStart: function (opt) {
+           $("#light-bulb2").html("");
+           $("#light-bulb").html("<img src=intro-gif1.gif />");
+        }
+      }); 
+
+      popcorn.footnote({
+        start: 12,
+        end: 19,
+        target: "display",
+        text: "and <b>refresh</b>, <b>detach</b> or <b>remove</b> a module."
+      });
+
+      popcorn.code({
+        start: 12,
+        end: 19,
+        onStart: function (opt) {
+           $("#light-bulb2").html("");
+           $("#light-bulb").html("<img src=intro-gif2.gif />");
+        }
+      }); 
+
+      popcorn.footnote({
+        start: 20,
+        end: 25,
+        target: "display",
+        text: "To insert a new node, try the <b>module</b> menu at top."
+      });
+
+      popcorn.code({
+        start: 20,
+        end: 25,
+        onStart: function (opt) {
+           $("#light-bulb2").html("");
+           $("#light-bulb").html("<img src=intro-gif3.gif />");
+        }
+      }); 
+
+      popcorn.footnote({
+        start: 26,
+        end: 30,
+        target: "display",
+        text: "The modules are classified in categories."
+      });
+
+      popcorn.code({
+        start: 26,
+        end: 30,
+        onStart: function (opt) {
+           $("#light-bulb2").html("");
+           $("#light-bulb").html("<img src=intro-gif4.gif />");
+        }
+      }); 
+
+      popcorn.footnote({
+        start: 31,
+        end: 36,
+        target: "display",
+        text: "Choose the module you want and drag it in an empty area."
+      });
+
+      popcorn.footnote({
+        start: 37,
+        end: 41,
+        target: "display",
+        text: "At the <b>source</b> menu you can see the app code."
+      });
+
+      popcorn.code({
+        start: 37,
+        end: 41,
+        onStart: function (opt) {
+           $("#light-bulb2").html("");
+           $("#light-bulb").html("<img src=intro-gif5.gif />");
+        }
+      }); 
+
+      popcorn.footnote({
+        start: 42,
+        end: 47,
+        target: "display",
+        text: "And at the <b>app</b> menu you can save your app..."
+      });
+
+      popcorn.code({
+        start: 42,
+        end: 47,
+        onStart: function (opt) {
+           $("#light-bulb2").html("");
+           $("#light-bulb").html("<img src=intro-gif6.gif />");
+        }
+      }); 
+
+      popcorn.footnote({
+        start: 48,
+        end: 53,
+        target: "display",
+        text: "and share as a <b>gist</b>, on <b>facebook</b> or <b>twitter</b>."
+      });
+
+      popcorn.code({
+        start: 48,
+        end: 53,
+        onStart: function (opt) {
+           $("#light-bulb2").html("");
+           $("#light-bulb").html("<img src=intro-gif7.gif />");
+        }
+      }); 
+
+      popcorn.footnote({
+        start: 54,
+        end: 59,
+        target: "display",
+        text: "There are lots of <b>example apps</b> to explore."
+      });
+
+      popcorn.code({
+        start: 54,
+        end: 59,
+        onStart: function (opt) {
+           $("#light-bulb2").html("");
+           $("#light-bulb").html("<img src=intro-gif8.gif />");
+        }
+      }); 
+
+      popcorn.footnote({
+        start: 60,
+        end: 65,
+        target: "display",
+        text: "Now you know everything to start using Meemoo!"
+      });
+
+      popcorn.footnote({
+        start: 66,
+        end: 71,
+        target: "display",
+        text: "Explore! Open an example app, hack it and share!"
+      });
+
+      popcorn.footnote({
+        start: 72,
+        target: "display",
+        text: "Good <b>hack</b>!"
+      });
+
+      popcorn.code({
+        start: 72,
+        onStart: function (opt) {
+           $("#light-bulb2").html("");
+
+        }
+      }); 
+
+
+    });
+
+    // on/off the light bulb
 
     var lightbulb = $("#light-bulb");
     var lightbulb2 = $("#light-bulb2"); 
@@ -45,11 +256,11 @@
     }).addInputs({
       in: {
         action: function (state) {
-          console.log(state);
 
     if (state == 1) {
       lightbulb.removeClass("off");
       lightbulb2.stop().fadeTo(750,1);
+      popcorn.play();
     } else {
       lightbulb.addClass("off");
       lightbulb2.stop().fadeTo(750,0);
