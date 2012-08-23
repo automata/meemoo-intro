@@ -18,10 +18,27 @@
     font-family: 'Fredericka the Great', cursive;
     font-size: 28pt;
     padding: 10px;
+    text-align: center;
   }
 
   #display h1 {
     font-size: 32pt;
+  }
+
+  #control {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+  }
+  
+  #control li {
+    color: #ddd;
+    display: inline;
+    padding: .2em;
+    font-size: 26pt;
+    cursor: hand;
+    cursor: pointer;
   }
   </style>
 
@@ -31,10 +48,35 @@
 
   <div id="player"></div>
   <div id="display"></div>
+  <ul id="control">
+    <li id="s1" onclick="goto(2, 1);">&#8226;</li>
+    <li id="s2" onclick="goto(6, 2);">&#8226;</li>
+    <li id="s3" onclick="goto(11, 3);">&#8226;</li>
+    <li id="s4" onclick="goto(16, 4);">&#8226;</li>
+    <li id="s5" onclick="goto(20, 5);">&#8226;</li>
+    <li id="s6" onclick="goto(24, 6);">&#8226;</li>
+    <li id="s7" onclick="goto(28, 7);">&#8226;</li>
+    <li id="s8" onclick="goto(32, 8);">&#8226;</li>
+    <li id="s9" onclick="goto(36, 9);">&#8226;</li>
+    <li id="s10" onclick="goto(40, 10);">&#8226;</li>
+    <li id="s11" onclick="goto(43, 11);">&#8226;</li>
+  </ul>
 
   <script type="text/javascript">
 
     var popcorn;
+
+    function goto(time, id) {
+      // clear all bullets
+      for (var i=1; i<12; i=i+1) {
+         $("#s"+i).css("color", "#ddd");
+      }
+      // mark the current bullet
+      $("#s"+id).css("color", "#000");
+
+      // seek and pause
+      popcorn.pause(time);                    
+    }
 
     document.addEventListener("DOMContentLoaded", function() {
 
@@ -52,11 +94,33 @@
         text: "<h1>Welcome to Meemoo!</h1>"
       });
 
+      popcorn.code({
+        start: 2,
+        end: 5,
+        onStart: function () {
+          $("#s1").css("color", "#000");
+        },
+        onEnd: function () {
+          $("#s1").css("color", "#ddd");
+        }
+      });
+
       popcorn.footnote({
         start: 6,
         end: 10,
         target: "display",
         text: "Meemoo is a <b>tool</b> to <b>remix</b> the Web."
+      });
+
+      popcorn.code({
+        start: 6,
+        end: 10,
+        onStart: function () {
+          $("#s2").css("color", "#000");
+        },
+        onEnd: function () {
+          $("#s2").css("color", "#ddd");
+        }
       });
 
       popcorn.footnote({
@@ -66,6 +130,18 @@
         text: "With Meemoo you can create images, animations, music..."
       });
 
+      popcorn.code({
+        start: 11,
+        end: 15,
+        onStart: function () {
+          $("#s3").css("color", "#000");
+        },
+        onEnd: function () {
+          $("#s3").css("color", "#ddd");
+        }
+      });
+
+
       popcorn.footnote({
         start: 16,
         end: 19,
@@ -73,12 +149,36 @@
         text: "... and share your creations on the Web!"
       });
 
+      popcorn.code({
+        start: 16,
+        end: 19,
+        onStart: function () {
+          $("#s4").css("color", "#000");
+        },
+        onEnd: function () {
+          $("#s4").css("color", "#ddd");
+        }
+      });
+
+
       popcorn.footnote({
-        start: 19,
+        start: 20,
         end: 23,
         target: "display",
         text: "Meemoo is what we call a <b>visual programming language</b>."
       });
+
+      popcorn.code({
+        start: 20,
+        end: 23,
+        onStart: function () {
+          $("#s5").css("color", "#000");
+        },
+        onEnd: function () {
+          $("#s5").css("color", "#ddd");
+        }
+      });
+
 
       popcorn.footnote({
         start: 24,
@@ -87,6 +187,18 @@
         text: "A language made by <b>boxes</b> and <b>wires</b>."
       });
 
+      popcorn.code({
+        start: 24,
+        end: 27,
+        onStart: function () {
+          $("#s6").css("color", "#000");
+        },
+        onEnd: function () {
+          $("#s6").css("color", "#ddd");
+        }
+      });
+
+
       popcorn.footnote({
         start: 28,
         end: 31,
@@ -94,11 +206,34 @@
         text: "This is a <b>box</b>. Or, a <b>module</b>."
       });
 
+      popcorn.code({
+        start: 28,
+        end: 31,
+        onStart: function () {
+          $("#s7").css("color", "#000");
+        },
+        onEnd: function () {
+          $("#s7").css("color", "#ddd");
+        }
+      });
+
+
       popcorn.footnote({
         start: 32,
         end: 35,
         target: "display",
         text: "Each <b>module</b> has <b>inputs</b> and <b>outputs</b>."
+      });
+
+      popcorn.code({
+        start: 32,
+        end: 35,
+        onStart: function () {
+          $("#s8").css("color", "#000");
+        },
+        onEnd: function () {
+          $("#s8").css("color", "#ddd");
+        }
       });
 
       popcorn.footnote({
@@ -108,6 +243,18 @@
         text: "We connect <b>outputs</b> into <b>inputs</b> using <b>wires</b>."
       });
 
+      popcorn.code({
+        start: 36,
+        end: 39,
+        onStart: function () {
+          $("#s9").css("color", "#000");
+        },
+        onEnd: function () {
+          $("#s9").css("color", "#ddd");
+        }
+      });
+
+
       popcorn.footnote({
         start: 40,
         end: 42,
@@ -115,11 +262,34 @@
         text: "Try yourself!"
       });
 
+      popcorn.code({
+        start: 40,
+        end: 42,
+        onStart: function () {
+          $("#s10").css("color", "#000");
+        },
+        onEnd: function () {
+          $("#s10").css("color", "#ddd");
+        }
+      });
+
+
       popcorn.footnote({
         start: 43,
         target: "display",
-        text: "Connect the <b>switch</b> module below to the <b>lamp</b> module."
+        text: "Connect the <b>switch</b> module below to the <b>lamp</b> module.<br /><img src=intro-gif0.gif />"
       });
+
+      popcorn.code({
+        start: 43,
+        onStart: function () {
+          $("#s11").css("color", "#000");
+        },
+        onEnd: function () {
+          $("#s11").css("color", "#ddd");
+        }
+      });
+
 
     }, false);
 

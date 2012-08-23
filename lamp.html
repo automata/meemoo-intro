@@ -42,6 +42,23 @@
   #display h1 {
     font-size: 32pt;
   }
+
+  #control {
+    bottom: 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+  }
+  
+  #control li {
+    color: #ddd;
+    display: inline;
+    padding: .2em;
+    font-size: 26pt;
+
+    cursor: hand;
+    cursor: pointer;
+  }
   </style>
 
 </head>
@@ -55,11 +72,39 @@
     <div id="light-bulb2" style="opacity: 1;"></div>
   </div>
 
+  <ul id="control">
+    <li id="s1" onclick="goto(1, 1);">&#8226;</li>
+    <li id="s2" onclick="goto(6, 2);">&#8226;</li>
+    <li id="s3" onclick="goto(12, 3);">&#8226;</li>
+    <li id="s4" onclick="goto(20, 4);">&#8226;</li>
+    <li id="s5" onclick="goto(26, 5);">&#8226;</li>
+    <li id="s6" onclick="goto(31, 6);">&#8226;</li>
+    <li id="s7" onclick="goto(37, 7);">&#8226;</li>
+    <li id="s8" onclick="goto(42, 8);">&#8226;</li>
+    <li id="s9" onclick="goto(48, 9);">&#8226;</li>
+    <li id="s10" onclick="goto(54, 10);">&#8226;</li>
+    <li id="s11" onclick="goto(60, 11);">&#8226;</li>
+    <li id="s12" onclick="goto(66, 12);">&#8226;</li>
+    <li id="s13" onclick="goto(72, 13);">&#8226;</li>
+  </ul>
+
   <script type="text/javascript">
 
     // popcorn baseplayer
 
     var popcorn;
+
+    function goto(time, id) {
+      // clear all bullets
+      for (var i=1; i<12; i=i+1) {
+         $("#s"+i).css("color", "#ddd");
+      }
+      // mark the current bullet
+      $("#s"+id).css("color", "#000");
+
+      // seek and pause
+      popcorn.pause(time);                    
+    }
 
     document.addEventListener("DOMContentLoaded", function() {
 
@@ -77,6 +122,17 @@
         text: "Good job!"
       });
     
+      popcorn.code({
+        start: 1,
+        end: 5,
+        onStart: function () {
+          $("#s1").css("color", "#000");
+        },
+        onEnd: function () {
+          $("#s1").css("color", "#ddd");
+        }
+      });
+
       popcorn.footnote({
         start: 6,
         end: 11,
@@ -88,9 +144,13 @@
         start: 6,
         end: 11,
         onStart: function (opt) {
+           $("#s2").css("color", "#000");
            $("#light-bulb2").html("");
            $("#light-bulb").html("<img src=intro-gif1.gif />");
-        }
+        },
+        onEnd: function () {
+          $("#s2").css("color", "#ddd");
+        }                  
       }); 
 
       popcorn.footnote({
@@ -104,8 +164,12 @@
         start: 12,
         end: 19,
         onStart: function (opt) {
+           $("#s3").css("color", "#000");
            $("#light-bulb2").html("");
            $("#light-bulb").html("<img src=intro-gif2.gif />");
+        },
+        onEnd: function () {
+          $("#s3").css("color", "#ddd");
         }
       }); 
 
@@ -120,8 +184,12 @@
         start: 20,
         end: 25,
         onStart: function (opt) {
+           $("#s4").css("color", "#000");
            $("#light-bulb2").html("");
            $("#light-bulb").html("<img src=intro-gif3.gif />");
+        },
+        onEnd: function () {
+          $("#s4").css("color", "#ddd");
         }
       }); 
 
@@ -136,8 +204,12 @@
         start: 26,
         end: 30,
         onStart: function (opt) {
+           $("#s5").css("color", "#000");
            $("#light-bulb2").html("");
            $("#light-bulb").html("<img src=intro-gif4.gif />");
+        },
+        onEnd: function () {
+          $("#s5").css("color", "#ddd");
         }
       }); 
 
@@ -147,6 +219,18 @@
         target: "display",
         text: "Choose the module you want and drag it in an empty area."
       });
+
+      popcorn.code({
+        start: 31,
+        end: 36,
+        onStart: function () {
+          $("#s6").css("color", "#000");
+        },
+        onEnd: function () {
+          $("#s6").css("color", "#ddd");
+        }
+      });
+
 
       popcorn.footnote({
         start: 37,
@@ -159,8 +243,12 @@
         start: 37,
         end: 41,
         onStart: function (opt) {
+           $("#s7").css("color", "#000");
            $("#light-bulb2").html("");
            $("#light-bulb").html("<img src=intro-gif5.gif />");
+        },
+        onEnd: function () {
+          $("#s7").css("color", "#ddd");
         }
       }); 
 
@@ -175,8 +263,12 @@
         start: 42,
         end: 47,
         onStart: function (opt) {
+           $("#s8").css("color", "#000");
            $("#light-bulb2").html("");
            $("#light-bulb").html("<img src=intro-gif6.gif />");
+        },
+        onEnd: function () {
+          $("#s8").css("color", "#ddd");
         }
       }); 
 
@@ -191,8 +283,12 @@
         start: 48,
         end: 53,
         onStart: function (opt) {
+           $("#s9").css("color", "#000");
            $("#light-bulb2").html("");
            $("#light-bulb").html("<img src=intro-gif7.gif />");
+        },
+        onEnd: function () {
+          $("#s9").css("color", "#ddd");
         }
       }); 
 
@@ -207,8 +303,12 @@
         start: 54,
         end: 59,
         onStart: function (opt) {
+           $("#s10").css("color", "#000");
            $("#light-bulb2").html("");
            $("#light-bulb").html("<img src=intro-gif8.gif />");
+        },
+        onEnd: function () {
+          $("#s10").css("color", "#ddd");
         }
       }); 
 
@@ -219,12 +319,36 @@
         text: "Now you know everything to start using Meemoo!"
       });
 
+      popcorn.code({
+        start: 60,
+        end: 65,
+        onStart: function () {
+          $("#s11").css("color", "#000");
+        },
+        onEnd: function () {
+          $("#s11").css("color", "#ddd");
+        }
+      });
+
+
       popcorn.footnote({
         start: 66,
         end: 71,
         target: "display",
         text: "Explore! Open an example app, hack it and share!"
       });
+
+      popcorn.code({
+        start: 66,
+        end: 71,
+        onStart: function () {
+          $("#s12").css("color", "#000");
+        },
+        onEnd: function () {
+          $("#s12").css("color", "#ddd");
+        }
+      });
+
 
       popcorn.footnote({
         start: 72,
@@ -235,8 +359,11 @@
       popcorn.code({
         start: 72,
         onStart: function (opt) {
+           $("#s13").css("color", "#000");
            $("#light-bulb2").html("");
-
+        },
+        onEnd: function () {
+          $("#s13").css("color", "#ddd");
         }
       }); 
 
