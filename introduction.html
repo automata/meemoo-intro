@@ -11,7 +11,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   <script src="https://meemoo.org/meemoo/v1/meemoo-min.js"></script>
 
-  <script src="https://popcornjs.org/code/dist/popcorn-complete.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/mozilla/popcorn-js/popcorn.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/mozilla/popcorn-js/modules/player/popcorn.player.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/mozilla/popcorn-js/plugins/footnote/popcorn.footnote.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/mozilla/popcorn-js/plugins/code/popcorn.code.js"></script>
 
   <style type="text/css">
   #display {
@@ -88,14 +91,14 @@
       // here the events triggered at specific times
       popcorn.footnote({
         start: 2,
-        end: 5,
+        end: 6,
         target: "display",
         text: "<h1>Welcome to Meemoo!</h1>"
       });
 
       popcorn.code({
         start: 2,
-        end: 5,
+        end: 6,
         onStart: function () {
           $("#s1").css("color", "#000");
         },
@@ -106,14 +109,14 @@
 
       popcorn.footnote({
         start: 6,
-        end: 10,
+        end: 11,
         target: "display",
         text: "Meemoo is a <b>tool</b> to <b>remix</b> the Web."
       });
 
       popcorn.code({
         start: 6,
-        end: 10,
+        end: 11,
         onStart: function () {
           $("#s2").css("color", "#000");
         },
@@ -124,14 +127,14 @@
 
       popcorn.footnote({
         start: 11,
-        end: 15,
+        end: 16,
         target: "display",
         text: "With Meemoo you can create images, animations, music..."
       });
 
       popcorn.code({
         start: 11,
-        end: 15,
+        end: 16,
         onStart: function () {
           $("#s3").css("color", "#000");
         },
@@ -143,14 +146,14 @@
 
       popcorn.footnote({
         start: 16,
-        end: 19,
+        end: 20,
         target: "display",
         text: "... and share your creations on the Web!"
       });
 
       popcorn.code({
         start: 16,
-        end: 19,
+        end: 20,
         onStart: function () {
           $("#s4").css("color", "#000");
         },
@@ -162,14 +165,14 @@
 
       popcorn.footnote({
         start: 20,
-        end: 23,
+        end: 24,
         target: "display",
         text: "Meemoo is what we call a <b>visual programming language</b>."
       });
 
       popcorn.code({
         start: 20,
-        end: 23,
+        end: 24,
         onStart: function () {
           $("#s5").css("color", "#000");
         },
@@ -181,14 +184,14 @@
 
       popcorn.footnote({
         start: 24,
-        end: 27,
+        end: 28,
         target: "display",
         text: "A language made by <b>boxes</b> and <b>wires</b>."
       });
 
       popcorn.code({
         start: 24,
-        end: 27,
+        end: 28,
         onStart: function () {
           $("#s6").css("color", "#000");
         },
@@ -200,14 +203,14 @@
 
       popcorn.footnote({
         start: 28,
-        end: 31,
+        end: 32,
         target: "display",
         text: "This is a <b>box</b>. Or, a <b>module</b>."
       });
 
       popcorn.code({
         start: 28,
-        end: 31,
+        end: 32,
         onStart: function () {
           $("#s7").css("color", "#000");
         },
@@ -237,14 +240,14 @@
 
       popcorn.footnote({
         start: 36,
-        end: 39,
+        end: 40,
         target: "display",
         text: "We connect <b>outputs</b> into <b>inputs</b> using <b>wires</b>."
       });
 
       popcorn.code({
         start: 36,
-        end: 39,
+        end: 40,
         onStart: function () {
           $("#s9").css("color", "#000");
         },
@@ -256,14 +259,14 @@
 
       popcorn.footnote({
         start: 40,
-        end: 42,
+        end: 43,
         target: "display",
         text: "Try yourself!"
       });
 
       popcorn.code({
         start: 40,
-        end: 42,
+        end: 43,
         onStart: function () {
           $("#s10").css("color", "#000");
         },
